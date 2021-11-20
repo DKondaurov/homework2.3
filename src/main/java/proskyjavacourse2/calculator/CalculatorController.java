@@ -10,35 +10,43 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/calculator")
 public class CalculatorController {
 
-    private final CalculatorService calculatorServiceImpl;
+    private final CalculatorService calculatorService;
 
-    public CalculatorController(CalculatorService calculatorServiceImpl) {
-        this.calculatorServiceImpl = calculatorServiceImpl;
+    private final HelloService helloService;
+
+    public CalculatorController(CalculatorService calculatorServiceImpl, HelloService helloServiceImpl) {
+        this.calculatorService = calculatorServiceImpl;
+        this.helloService = helloServiceImpl;
     }
 
     @GetMapping
-    public String helloCalculator() {
-        return calculatorServiceImpl.helloCalculator();
+    public String speakHello() {
+        return helloService.speakHello();
     }
 
+
     @GetMapping("/plus")
-    public String plusCalculator(@RequestParam("num1") int num, @RequestParam("num2") int num1) {
-        return calculatorServiceImpl.plusCalculator(num, num1);
+    public String plusCalculator(@RequestParam() int num1, @RequestParam() int num2) {
+        return num1 + " + " + num2 + " = " + calculatorService.sumNums(num1, num2);
     }
 
     @GetMapping("/minus")
-    public String minusCalculator(@RequestParam("num1") int num, @RequestParam("num2") int num1) {
-        return calculatorServiceImpl.minusCalculator(num, num1);
+    public String minusCalculator(@RequestParam() int num1, @RequestParam() int num2) {
+        return num1 + " - " + num2 + " = " + calculatorService.subtractNums(num1, num2);
     }
 
     @GetMapping("/multiply")
-    public String multiplyCalculator(@RequestParam("num1") int num, @RequestParam("num2") int num1) {
-        return calculatorServiceImpl.multiplyCalculator(num, num1);
+    public String multiplyCalculator(@RequestParam() int num1, @RequestParam() int num2) {
+        return num1 + " * " + num2 + " = " + calculatorService.multiplyNums(num1, num2);
     }
 
     @GetMapping("/divide")
-    public String divideCalculator(@RequestParam("num1") int num, @RequestParam("num2") int num1) {
-        return calculatorServiceImpl.divideCalculator(num, num1);
+    public String divideCalculator(@RequestParam() int num1, @RequestParam() int num2) {
+        if (num2 == 0) {
+            return "На " + num2 + " делить нельзя!!!";
+        } else {
+            return num1 + " / " + num2 + " = " + calculatorService.divideNums(num1, num2);
+        }
     }
 
 }

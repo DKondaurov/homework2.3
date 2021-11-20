@@ -1,14 +1,13 @@
 package proskyjavacourse2.calculator;
 
 public interface CalculatorService {
-    String helloCalculator();
 
-    String plusCalculator(int num1, int num2);
+    int sumNums(int num1, int num2);
 
-    String minusCalculator(int num1, int num2);
+    int subtractNums(int num1, int num2);
 
-    String multiplyCalculator(int num1, int num2);
+    int multiplyNums(int num1, int num2);
 
-    String divideCalculator(int num1, int num2);
+    double divideNums(int num1, int num2);
 
 }
