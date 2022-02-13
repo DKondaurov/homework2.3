@@ -1,4 +1,4 @@
-package proskyjavacourse2.calculator;
+package pro.sky.java.course2.calculator;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
