@@ -1,7 +1,7 @@
 package pro.sky.java.course2.calculator;
 
 import org.junit.jupiter.api.Test;
-import pro.sky.java.course2.calculator.exception.IllegalArgumentException;
+import pro.sky.java.course2.calculator.exception.CannotBeDividedByZeroException;
 import pro.sky.java.course2.calculator.service.CalculatorService;
 import pro.sky.java.course2.calculator.service.impl.CalculatorServiceImpl;
 
@@ -41,7 +41,7 @@ class CalculatorServiceTest {
 
     @Test
     void divideNumsByZero() {
-        assertThrows(IllegalArgumentException.class, () -> calculatorService.divideNums(num1, num0));
+        assertThrows(CannotBeDividedByZeroException.class, () -> calculatorService.divideNums(num1, num0));
     }
 
 }
